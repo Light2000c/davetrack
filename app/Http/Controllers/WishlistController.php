@@ -12,7 +12,7 @@ class WishlistController extends Controller
     // returns the view which displays product on the wishlis
     public function index(){
         $wishes = wishlist::where('user_id', Auth::user()->id)->paginate(5);
-        return view('products\wishlist',[
+        return view('products.wishlist',[
             'wishes'=> $wishes,
         ]);
     }

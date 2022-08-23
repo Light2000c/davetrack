@@ -11,8 +11,8 @@ class UsersController extends Controller
 {
     //return a view which displays all users infomation
     public function index(){
-        $users = User::where('is_admin', 0)->paginate(7);
-        return view('admin\users',[
+        $users = User::orderBy('created_at', 'Desc')->where('is_admin', 0)->paginate(7);
+        return view('admin.users',[
             'users' => $users,
         ]);
     }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
@@ -10,6 +9,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Product2Controller;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\admin\ResetPassword;
 use App\Http\Controllers\auth\AuthController;
@@ -36,6 +36,8 @@ use App\Http\Controllers\admin\OrderController as AdminOrderController;
 use App\Http\Controllers\admin\LogoutController as AdminLogoutController;
 use App\Http\Controllers\SearchController as ControllersSearchController;
 use App\Http\Controllers\admin\AddressController as AdminAddressController;
+use App\Http\Controllers\admin\DeleteTagCat;
+use App\Http\Controllers\admin\PermitController;
 use App\Http\Controllers\DashboardController as ControllersDashboardController;
 use App\Http\Controllers\products\ProductController as ProductsProductController;
 use App\Http\Controllers\admin\TransactionController as AdminTransactionController;
@@ -58,23 +60,24 @@ Auth::routes(['verify'=> true]);
 
 // main routes
 
+
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [AuthLoginController::class, 'index'])->name('login');
 Route::post('/login', [AuthLoginController::class, 'login']);
 Route::get('forgot-password',function(){
-    return view('auth\passwords\email');
+    return view('auth.passwords.email');
 })->name('forgot-password');
-Route::get('/product', [ProductsProductController::class, 'index'])->name('main-product');
+Route::get('/shop/{category?}/{tag?}/{price?}', [ProductsProductController::class, 'index'])->name('main-product');
+Route::post('/shop/{category?}/{tag?}/{price?}', [ProductsProductController::class, 'filter']);
 Route::get('/product/{product}', [ViewProductController::class, 'index'])->name('view-product');
 Route::get('search/{search}', [ControllersSearchController::class, 'index'])->name('search-result');
 Route::post('search', [ControllersSearchController::class, 'search'])->name('searching');
 Route::get('about-us', [AboutController::class, 'index'])->name('about');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::post('contact', [ContactController::class, 'contactus']);
 
-
-
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth'=> 'verified'])->group(function(){
 Route::get('/dashboard',[ControllersDashboardController::class, 'index'])->name('dashboard');
 Route::put('/dashboard',[ControllersDashboardController::class, 'update']);
 
@@ -111,6 +114,7 @@ Route::middleware('is_admin')->group(function() {
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
 Route::put('/admin/dashboard', [DashboardController::class, 'updateProfile']);
 Route::post('/admin/dashboard', [DashboardController::class, 'postRequest'])->name('searches');
+Route::delete('/admin/dashboard/{user}', [DashboardController::class, 'delete'])->name('delete-member');
 
 Route::get('/admin/add-product', [AddproductController::class, 'index'])->name('add-product');
 Route::post('/admin/add-product', [AddproductController::class, 'store']);
@@ -133,7 +137,7 @@ Route::put('/admin/reset-password',[ResetPassword::class, 'store']);
 Route::get('/admin/carts',[AdminCartController::class, 'index'])->name('admin-cart');
 Route::delete('/admin/carts/{cart}',[AdminCartController::class, 'delete'])->name('admin-delete-cart');
 
-Route::get('/admin/orders',[AdminOrderController::class, 'index'])->name('admin-order');
+// Route::get('/admin/orders',[AdminOrderController::class, 'index'])->name('admin-order');
 
 Route::get('/admin/addresses', [AdminAddressController::class, 'index'])->name('admin-address');
 
@@ -148,10 +152,13 @@ Route::post('admin/message', [BulkMessageController::class, 'send']);
 
 Route::get('admin/tags', [TagController::class,'index'])->name('tags');
 Route::post('admin/tags', [TagController::class,'tagCategory']);
-Route::delete('admin/tags/{id}', [TagController::class, 'delete'])->name('tag_category');
+Route::delete('admin/tag/{id}', [TagController::class, 'delete'])->name('tag_category');
 
-Route::post('/admin/logout', [AdminLogoutController::class, 'logout'])->name('admin-logout');
+Route::post('admin/logout', [AdminLogoutController::class, 'logout'])->name('admin-logout');
 
+Route::put('admin/permit/{user}', [PermitController::class, 'update'])->name('permit');
+
+Route::delete('admin/tag/category/{id}', [DeleteTagCat::class, 'deleteTagCat'])->name('deleteTagCat');
 
 });
 

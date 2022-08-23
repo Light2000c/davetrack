@@ -1,4 +1,4 @@
-@extends('layout\admin\app')
+@extends('layout.admin.app')
 
 @section('content')
 
@@ -110,7 +110,7 @@ alert()->error('Error!', session('error'))->persistent('Dismiss');
                             <tr>
                                 <td>{{ $category->title }} </td>
                                 <td>{{ $category->created_at }}</td>
-                                <form action="{{ route('tag_category',['id',$category->id]) }}" method="post">
+                                <form action="{{ route('deleteTagCat',$category->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <input type="text" name="category" value="category" hidden>
@@ -145,7 +145,7 @@ alert()->error('Error!', session('error'))->persistent('Dismiss');
                             <tr>
                                 <td>{{ $tag->title }} </td>
                                 <td>{{ $tag->created_at }}</td>
-                                <form action="{{ route('tag_category',['id',$tag->id]) }}" method="post">
+                                <form action="{{ route('deleteTagCat', $tag->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <input type="text" name="tag" value="tag" hidden>

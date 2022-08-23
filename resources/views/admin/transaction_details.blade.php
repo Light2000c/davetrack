@@ -1,4 +1,4 @@
-@extends('layout\admin\app')
+@extends('layout.admin.app')
 
 @section('content')
 
@@ -46,7 +46,11 @@
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->code }}</td>
                                 <td>{{ $order->quantity * $order->product->product_price }}</td>
+                                @if($order->status == 'complete')
+                                <td><span class="badge badge-success">{{ $order->status }}</span></td>
+                                @else
                                 <td><span class="badge badge-info">{{ $order->status }}</span></td>
+                                @endif
                                 <td>{{ $order->created_at }}</td>
                             </tr>
                             @endforeach

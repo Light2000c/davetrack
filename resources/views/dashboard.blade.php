@@ -1,4 +1,4 @@
-@extends('layout\app')
+@extends('layout.app')
 
 
 @section('content')
@@ -12,9 +12,8 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->

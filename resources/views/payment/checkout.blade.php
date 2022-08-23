@@ -1,4 +1,4 @@
-@extends('layout\app')
+@extends('layout.app')
 
 
 @section('content')
@@ -6,9 +6,8 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Login</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -84,7 +83,7 @@
                                 }
 
                                 @endphp -->
-                                <td>$0</td>
+                                <td>₦0</td>
                             </tr><!-- End .summary-shipping-row -->
 
                             <tr class="summary-shipping-row">
@@ -93,11 +92,11 @@
                                         <label class="custom-control-label" for="express-shipping">Send fee:</label>
                                     </div><!-- End .custom-control -->
                                 </td>
-                                <td>$20.00</td>
+                                <td>Negotiable</td>
                             </tr><!-- End .summary-shipping-row -->
 
                             <tr class="summary-shipping-estimate">
-                                <td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
+                                <td>Estimate for Your Delivery<br> <a href="dashboard.html">Change address</a></td>
                                 <td>&nbsp;</td>
                             </tr><!-- End .summary-shipping-estimate -->
 
@@ -117,7 +116,7 @@
                     </p>
                     <input type="hidden" name="email" value="{{ Auth::user()->email }}"> {{-- required --}}
                     <input type="hidden" name="orderID" value="345">
-                    <input type="hidden" name="amount" value="{{ $total_cart + 00 }}"> {{-- required in kobo --}}
+                    <input type="hidden" name="amount" value="{{ $total_cart }}00"> {{-- required in kobo --}}
                     <input type="hidden" name="quantity" value="1">
                     <input type="hidden" name="currency" value="NGN">
                     <!-- <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value','cart'=> $carts]) }}"> -->

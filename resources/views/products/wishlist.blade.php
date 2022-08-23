@@ -1,4 +1,4 @@
-@extends('layout\app')
+@extends('layout.app')
 
 @section('content')
 <main class="main">
@@ -10,8 +10,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Wishlist</li>
                     </ol>
                 </div><!-- End .container -->
@@ -44,13 +43,13 @@
 								<td class="product-col">
 									<div class="product">
 										<figure class="product-media">
-											<a href="#">
+											<a href="{{ route('view-product', $wish) }}">
 												<img src="/products/{{ $wish->product->product_image}}" alt="Product image">
 											</a>
 										</figure>
 
 										<h3 class="product-title">
-											<a href="#">{{ $wish->product->product_name }}</a>
+											<a href="{{ route('view-product', $wish) }}">{{ $wish->product->product_name }}</a>
 										</h3><!-- End .product-title -->
 									</div><!-- End .product -->
 								</td>

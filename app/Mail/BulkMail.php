@@ -31,6 +31,6 @@ class BulkMail extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->details['subject'])->view('mails.bulkMail');
+        return $this->subject($this->details['subject'])->markdown('mails.bulkMail');
     }
 }

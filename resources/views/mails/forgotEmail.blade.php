@@ -7,8 +7,7 @@ Reset Password
 @endcomponent
 
 @component('mail::subcopy')
-
-If you're having trouble clicking the "Reset Password" button, copy and paste the URL below into your web browser: {{ $url }}
+Davetrack Technologies is a leading enterprise at securing our clients/customers by providing them with substantial products that meet their needs. for more enquiries reach at to us at support@davetracktechnologies.com
 @endcomponent
 
 @endcomponent

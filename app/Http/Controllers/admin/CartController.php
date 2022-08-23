@@ -12,7 +12,7 @@ class CartController extends Controller
     returns a view which displays all users cart
      */
     public function index(){
-        $carts = Cart::paginate(7);
+        $carts = Cart::orderBy('created_at', 'Desc')->paginate(7);
         return view('admin.usercart',[
             'carts'=> $carts,
         ]);

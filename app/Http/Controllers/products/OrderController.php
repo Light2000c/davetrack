@@ -10,11 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     public function index(Transaction $transaction){
 
 
         $orders = Order::where('code',$transaction->transact_code)->where('user_id', Auth::user()->id)->paginate(5);
-        return view('products\order',[
+        return view('products.order',[
             'orders'=> $orders,
             'transaction', $transaction,
             'ts' => $transaction

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,14 +39,14 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest');
+        $this->middleware('guest');
     }
 
 
     //returns view thats displays the registration form
     public function index()
     {
-        return view('auth\register');
+        return view('auth.register');
     }
 
 

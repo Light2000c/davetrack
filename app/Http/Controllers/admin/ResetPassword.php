@@ -14,7 +14,7 @@ class ResetPassword extends Controller
     public function index()
     {
 
-        return view('admin\resetPassword');
+        return view('admin.resetPassword');
     }
 
     //gets new password from user after form validation

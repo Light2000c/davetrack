@@ -1,4 +1,4 @@
-@extends('layout\admin\app')
+@extends('layout.admin.app')
 
 @section('content')
 
@@ -11,7 +11,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                             <div class="card-content">
                                 <h5 class="font-15">Users</h5>
-                                <h2 class="mb-3 font-18">10</h2>
+                                <h2 class="mb-3 font-18">{{ $users->count() }}</h2>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -29,7 +29,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                             <div class="card-content">
                                 <h5 class="font-15">Products</h5>
-                                <h2 class="mb-3 font-18">10</h2>
+                                <h2 class="mb-3 font-18">{{ $products->count() }}</h2>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -47,7 +47,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                             <div class="card-content">
                                 <h5 class="font-15">Cart</h5>
-                                <h2 class="mb-3 font-18 text-success">50</h2>
+                                <h2 class="mb-3 font-18 text-success">{{ $carts->count() }}</h2>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -65,7 +65,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                             <div class="card-content">
                                 <h5 class="font-15">Orders</h5>
-                                <h2 class="mb-3 font-18 text-success">12</h2>
+                                <h2 class="mb-3 font-18 text-success">{{ $orders->count() }}</h2>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -92,7 +92,6 @@
                     <h2>Super Admin</h2>
                     <h5 class="text-muted mt-3">{{ Auth::user()->name }}</h5>
                     <h5 class="text-muted">{{ Auth::user()->email }}</h5>
-                    <a class="btn btn-primary mt-3" href="https://getbootstrap.com/docs/4.0/components/forms/" target="_blank" role="button">Learn more</a>
                 </div>
             </div>
         </div>
@@ -125,7 +124,7 @@
                     <h4>Update Profile</h4>
                 </div>
                 <div class="card-body">
-
+                    <!--
                     @if(session('error'))
                     <div class="alert alert-danger mb-2" role="alert">
                         {{ session('error') }}
@@ -136,7 +135,7 @@
                     <div class="alert alert-success mb-2" role="alert">
                         {{ session('success') }}
                     </div>
-                    @endif
+                    @endif -->
 
                     <div class="form-group">
                         <label>Full Name</label>
@@ -185,6 +184,7 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Action</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -193,15 +193,44 @@
                                 <td>1</td>
                                 <td>{{ $teamMember->name }} </td>
                                 <td>{{ $teamMember->email }}</td>
-                                @if($teamMember->super_admin == 1 )
+                                @if($teamMember->super_admin == 1)
                                 <td><span class="badge badge-info">Super Admin</span></td>
-                                <form action="" method="post">
-                                <td><button type="submit" class="btn btn-sm btn-success">Delete</button></td>
-                                </form>
                                 @else
                                 <td><span class="badge badge-primary">Admin</span></td>
-                                <td><button class="btn btn-sm btn-success" disabled>Delete</button></td>
                                 @endif
+
+                                @if(Auth::user()->super_admin == 1 )
+
+                                @if($teamMember->permission == 1)
+                                <form action="{{ route('permit', $teamMember) }}" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <input type="text" name="remove" hidden>
+                                    <td><button type="submit" class="btn btn-sm btn-success">UnPermit</button></td>
+                                </form>
+                                @else
+                                <form action="{{ route('permit', $teamMember) }}" method="post">
+                                    @csrf
+                                    @method('put')
+                                    <input type="text" name="add" hidden>
+                                    <td><button type="submit" class="btn btn-sm btn-success">Permit</button></td>
+                                </form>
+                                @endif
+
+                                @endif
+
+                                @if(Auth::user()->super_admin == 1 )
+                                <form action="{{ route('delete-member', $teamMember) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <td><button type="submit" class="btn btn-sm btn-success">Delete</button></td>
+                                </form>
+                                @else
+                                <td>
+                                    <button class="btn btn-sm btn-success" disabled>Delete</button>
+                                </td>
+                                @endif
+
 
                             </tr>
                             @endforeach
@@ -238,7 +267,7 @@
                 <input type="text" name="req" value="add-member" hidden>
                 <div class="card-body">
 
-                    @if(session('error'))
+                    <!-- @if(session('error'))
                     <div class="alert alert-danger mb-2" role="alert">
                         {{ session('error') }}
                     </div>
@@ -248,7 +277,7 @@
                     <div class="alert alert-success mb-2" role="alert">
                         {{ session('success') }}
                     </div>
-                    @endif
+                    @endif -->
 
                     <div class="form-group">
                         <label>Member Name</label>
@@ -288,7 +317,7 @@
                 </div>
                 @else
                 <div class="card-footer text-right">
-                    <button  class="btn btn-primary" disabled>Add Member</button>
+                    <button class="btn btn-primary" disabled>Add Member</button>
                 </div>
                 @endif
             </form>

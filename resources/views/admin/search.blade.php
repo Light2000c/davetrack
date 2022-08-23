@@ -1,4 +1,4 @@
-@extends('layout\admin\app')
+@extends('layout.admin.app')
 
 @section('content')
 <!-- begin app-main -->
@@ -105,8 +105,6 @@
         <!-- end row -->
 
                             </div>
-
-
                             <div class="tab-pane fade" id="rent-02" role="tabpanel" aria-labelledby="rent-02-tab">
                                 @if($users->count())
                                 <div class="card-body">

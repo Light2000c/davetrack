@@ -12,7 +12,7 @@ class TagController extends Controller
     {
         $categories = Category::get();
         $tags = Tag::get();
-        return view('admin\tagCategory', [
+        return view('admin.tagCategory', [
             'categories' => $categories,
             'tags' => $tags,
         ]);

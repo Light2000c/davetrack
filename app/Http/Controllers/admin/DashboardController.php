@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use Exception;
+use App\Models\Cart;
 use App\Models\User;
+use App\Models\Order;
 use App\Mail\Testmail;
+use App\Models\Product;
 use App\Mail\MemberMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,9 +24,18 @@ class DashboardController extends Controller
     public function index()
     {
         //get all teammember data from database and return with the view
-        $teamMembers = User::where('id', '!=', Auth::user()->id)->paginate(7);
-        return view('admin\dashboard', [
-            'teamMembers' => $teamMembers
+        $products = Product::orderBy('created_at', 'Desc')->get();
+        $users = User::orderBy('created_at', 'Desc')->get();
+        $carts = Cart::orderBy('created_at', 'Desc')->get();
+        $orders = Order::orderBy('created_at', 'Desc')->get();
+        $teamMembers = User::where('id', '!=', Auth::user()->id)
+        ->where('is_admin','!=' , 0)->paginate(7);
+        return view('admin.dashboard', [
+            'teamMembers' => $teamMembers,
+            'products' => $products,
+            'users' => $users,
+            'carts' => $carts,
+            'orders' => $orders,
         ]);
     }
 
@@ -71,7 +83,7 @@ class DashboardController extends Controller
                 'password' => 'required|confirmed',
             ]);
 
-            $url = '/admin/login';
+            $url = 'http://127.0.0.1:8000/admin/login';
 
             //stores the the data of the team member on a variable detail
             $details = [
@@ -111,5 +123,17 @@ class DashboardController extends Controller
             //redirects to the search page with the search result
             return redirect()->route('search', $request->search);
         }
+    }
+
+
+    public function delete(User $user){
+        $success = $user->delete();
+
+        if($success){
+            return back()->with('success','Team member account has been deleted');
+        }else{
+            return back()->with('error', 'Something went wrong, please try again later.');
+        }
+
     }
 }

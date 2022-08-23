@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Otika - Admin Dashboard Template</title>
+    <title>Davetrack - Electronic Online Shop</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="/web1/assets/css/app.min.css">
     <!-- Template CSS -->
@@ -187,7 +187,7 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Main</li>
-                        <li class="dropdown active">
+                        <li class="dropdown ">
                             <a href="{{ route('admin-dashboard') }}" class="nav-link"><i data-feather="user"></i><span>Dashboard</span></a>
                         </li>
                         <li class="dropdown">
@@ -199,9 +199,6 @@
                         </li>
                         <li class="dropdown">
                             <a href="{{ route('users') }}" class="nav-link"><i data-feather="users"></i><span>Users</span></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="{{ route('admin-order') }}" class="nav-link"><i data-feather="shopping-bag"></i><span>Order</span></a>
                         </li>
                         <li class="dropdown">
                             <a href="{{ route('admin-cart') }}" class="nav-link"><i data-feather="shopping-cart"></i><span>Cart</span></a>

@@ -13,8 +13,8 @@ return a view wish desplays the users address
 */
     public function index()
     {
-        $addresses = Address::paginate(10);
-        return view('admin\address', [
+        $addresses = Address::orderBy('created_at', 'Desc')->paginate(10);
+        return view('admin.address', [
             'addresses' => $addresses,
         ]);
     }

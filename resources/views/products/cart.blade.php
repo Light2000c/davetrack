@@ -1,19 +1,18 @@
-@extends('layout\app')
+@extends('layout.app')
 
 @section('content')
 
 <main class="main">
-    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+    <div class="page-header text-center" style="background-image: url('/web/assets/images/page-header-bg.jpg')">
         <div class="container">
-            <h1 class="page-title"> Cart<span>Shop</span></h1>
+            <h1 class="page-title"> Cart<span></span></h1>
         </div><!-- End .container -->
     </div><!-- End .page-header -->
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">{{ route('cart') }}</a></li>
-                <!-- <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li> -->
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Carts</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -78,13 +77,13 @@
                                             </h3>
                                         </div>
                                     </td>
-                                    <td class="price-col">${{ $cart->product->product_price }}</td>
+                                    <td class="price-col">₦{{ number_format($cart->product->product_price) }}</td>
                                     <!-- <td class="price-col">
                                         {{ $cart->quantity }}
                                         </td> -->
                                     <td class="quantity-col">
                                         <div class="cart-product-quantity">
-                                            <input id="{{ $cart->id }}" type="number" class="form-control" value="{{ $cart->quantity }}" min="1" max="10" step="1" data-decimals="0" required>
+                                            <input id="{{ $cart->id }}" type="number" class="form-control" value="{{ $cart->quantity }}" min="1" max="10" step="1" required>
                                         </div>
                                         <script>
                                             $(document).ready(function() {
@@ -103,6 +102,8 @@
                                                         }
                                                     });
                                                     myCarts("{{ Auth::user()->id }}");
+                                                    cartCount("{{ Auth::user()->id }}");
+                                                    cartCartCount("{{ Auth::user()->id }}");
                                                 });
                                             });
                                         </script>
@@ -149,29 +150,20 @@
                                     $total_cart = $total_cart + $new_cart;
                                     }
                                     @endphp -->
-                                        <td><h6 id="sub_total">${{ $total_cart }}</h6></td>
+                                        <td><h6 id="sub_total">₦{{ $total_cart }}</h6></td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr class="summary-shipping">
-                                        <td>Shipping:</td>
+                                        <td>Delivery:</td>
                                         <td>&nbsp;</td>
                                     </tr>
 
                                     <tr class="summary-shipping-row">
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <label class="custom-control-label" for="free-shipping">Free Shipping</label>
+                                                <label class="custom-control-label" for="free-shipping">Delivery Amount</label>
                                             </div><!-- End .custom-control -->
                                         </td>
-                                        <td>$0.00</td>
-                                    </tr><!-- End .summary-shipping-row -->
-
-                                    <tr class="summary-shipping-row">
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <label class="custom-control-label" for="standart-shipping">Standart:</label>
-                                            </div><!-- End .custom-control -->
-                                        </td>
-                                        <td>$10.00</td>
+                                        <td>Negotiable</td>
                                     </tr><!-- End .summary-shipping-row -->
 
                                     <tr class="summary-shipping-row">
@@ -180,11 +172,20 @@
                                                 <label class="custom-control-label" for="express-shipping">Number of carts:</label>
                                             </div><!-- End .custom-control -->
                                         </td>
-                                        <td>{{ $carts->count() }}</td>
+                                        @php
+$quantities = 0;
+$quantity_count = 0;
+foreach($carts as $cart){
+    $quantity_count = $quantity_count + $cart->quantity;
+    $quantities = $quantity_count;
+}
+
+                                        @endphp
+                                        <td id="cartItems">{{ $cart_quantity }}</td>
                                     </tr><!-- End .summary-shipping-row -->
 
                                     <tr class="summary-shipping-estimate">
-                                        <td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
+                                        <td>Estimate for Your Delivery<br> <a href="dashboard.html">Change address</a></td>
                                         <td>&nbsp;</td>
                                     </tr><!-- End .summary-shipping-estimate -->
 
@@ -197,7 +198,7 @@
                                         $total_cart = $total_cart + $new_cart;
                                         }
                                         @endphp
-                                        <td id="total">${{ $total_cart }}</td>
+                                        <td id="total">₦{{ number_format($total_cart) }}</td>
                                     </tr><!-- End .summary-total -->
                                 </tbody>
                             </table><!-- End .table table-summary -->

@@ -7,13 +7,12 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Login</li>
+                <li class="breadcrumb-item active" aria-current="page">Register</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
 
-    <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('/web/assets/images/backgrounds/login-bg.jpg')">
+    <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('/logo/davetrack login page website (1).jpg')">
         <div class="container">
             <div class="form-box">
                 <div class="form-tab">
@@ -77,7 +76,7 @@
                                     </button>
 
                                     <div class="custom-control">
-                                       <label class="custom-control" >Already have an account? <a href="#">Sign in</a> *</label>
+                                       <label class="custom-control" >Already have an account? <a href="{{route('login') }}">Sign in</a></label>
                                     </div>
 
                                 </div><!-- End .form-footer -->

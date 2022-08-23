@@ -4,11 +4,9 @@ namespace App\Models;
 
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\Address;
 use App\Models\Transaction;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\MailResetPasswordToken;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

@@ -1,4 +1,4 @@
-@extends('layout\admin\app')
+@extends('layout.admin.app')
 
 @section('content')
 <!-- begin app-main -->
@@ -39,7 +39,11 @@
                             @foreach($transactions as $transaction)
                             <tr>
                                 <td>{{ $transaction->transact_code }}</td>
+                                @if($transaction->status == 'complete')
+                                <td><span class="badge badge-success">{{ $transaction->status }}</span></td>
+                                @else
                                 <td><span class="badge badge-info">{{ $transaction->status }}</span></td>
+                                @endif
                                 <td>{{ $transaction->product_count }}</td>
                                 <td>{{ $transaction->amount }}</td>
                                 <td>{{ $transaction->created_at }}</td>

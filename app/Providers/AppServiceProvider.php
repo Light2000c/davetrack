@@ -35,8 +35,10 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::user()) {
                 $wishes = wishlist::where('user_id', Auth::user()->id)->get();
                 $cart = Cart::where('user_id', Auth::user()->id)->get();
+                $items = Cart::where('user_id', Auth::user()->id)->sum('quantity');
                 View::share('cartt', $cart,);
                 View::share('wishess', $wishes,);
+                View::share('items', $items,);
             }
         });
 

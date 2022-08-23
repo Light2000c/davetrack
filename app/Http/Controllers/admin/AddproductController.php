@@ -15,7 +15,7 @@ class AddproductController extends Controller
 
     public function index(){
         $categories = Category::get();
-        return view('admin\addproduct', [
+        return view('admin.addproduct', [
             'categories' => $categories,
         ]);
     }

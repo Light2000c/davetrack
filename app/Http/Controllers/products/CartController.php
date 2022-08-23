@@ -12,12 +12,17 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     public function index()
     {
-
+        $cart_quantity = Cart::where('user_id', Auth::user()->id)->sum('quantity');
         $carts = Cart::where('user_id', Auth::user()->id)->paginate(5);
-        return view('products\cart', [
+        return view('products.cart', [
             'carts' => $carts,
+            'cart_quantity' => $cart_quantity,
         ]);
     }
 

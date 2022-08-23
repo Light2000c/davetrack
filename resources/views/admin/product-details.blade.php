@@ -1,4 +1,4 @@
-@extends('layout\admin\app')
+@extends('layout.admin.app')
 
 @section('content')
 <!-- begin row -->
@@ -33,9 +33,9 @@
 
                 <div class="d-flex justify-content-center">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-lg-6">
                             <div class="d-flex justify-content-center">
-                                <img src="/products/{{ $product->product_image}}" alt="">
+                                <img class="img-fluid" src="/products/{{ $product->product_image}}" alt="">
                             </div>
 
                             <div class="m-2">
@@ -52,12 +52,16 @@
                                         <small id="emailHelp" class="form-text  text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
+                                    @if(Auth::user()->permission == 1)
                                     <button type="submit" class="btn btn-primary">Upload</button>
-                            </div>
+                              @else
+                              <button type="submit" class="btn btn-primary" disabled>Upload</button>
+                              @endif
+                                </div>
                             </form>
                         </div>
 
-                        <div class="col">
+                        <div class="col-lg-6">
                             <div class="card-body">
                                 <form action="{{ route('product-details', $product) }}" method="post" enctype="multipart/form-data">
                                     @csrf
@@ -93,9 +97,9 @@
                                             @endif
                                             @foreach($tags as $tag)
                                             @if($tag == $product->tag)
-                                            <option selected value="{{ $tag }}">{{ $tag }}</option>
+                                            <option selected value="{{ $tag->title }}">{{ $tag->title }}</option>
                                             @else
-                                            <option value="{{ $tag }}">{{ $tag}}</option>
+                                            <option value="{{ $tag }}">{{ $tag->title }}</option>
                                             @endif
                                             @endforeach
                                         </select>
@@ -146,7 +150,11 @@
                                         <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
+                                    @if(Auth::user()->permission == 1)
                                     <button type="submit" class="btn btn-primary">Update Product</button>
+                                @else
+                                <button type="submit" class="btn btn-primary" disabled>Update Product</button>
+                                @endif
                                 </form>
                             </div>
                         </div>

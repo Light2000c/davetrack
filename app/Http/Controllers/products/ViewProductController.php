@@ -14,11 +14,12 @@ class ViewProductController extends Controller
     public function index(Product $product){
 
         $cart="";
+        $others = Product::where('product_category', $product->product_category)
+        ->where('id', '!=', $product->id)->get();
         if(Auth::user()){
         $cart = $product->cart()->where('user_id', Auth::user()->id)->first();
-        $others = Product::where('product_category', $product->product_category)->get();
     }
-        return view('products\viewProduct',[
+        return view('products.viewProduct',[
             'product' => $product,
             'cart' => $cart,
             'others' => $others,

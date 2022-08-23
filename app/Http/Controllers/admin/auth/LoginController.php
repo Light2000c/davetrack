@@ -9,10 +9,15 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
     // returns the view wish displays the admin login form
     public function index()
     {
-        return view('admin\login');
+        return view('admin.login');
     }
 
     //validates the admin login form and and automatically login the user is credentials are correct
@@ -32,7 +37,7 @@ class LoginController extends Controller
 
         //check if the user making the request is an admin or a customer and takes them to their dashboards
         if (Auth::user()->is_admin == 1) {
-            return redirect()->route('product');
+            return redirect()->route('admin-dashboard');
         } else {
             return redirect()->route('add-product');
         }

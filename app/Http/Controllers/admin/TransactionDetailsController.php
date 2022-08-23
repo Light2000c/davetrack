@@ -13,8 +13,8 @@ class TransactionDetailsController extends Controller
     public function index(Transaction $transaction)
     {
 
-        $orders = Order::where('code', $transaction->transact_code)->paginate(7);
-        return view('admin\transaction_details', [
+        $orders = Order::orderBy('created_at', 'Desc')->where('code', $transaction->transact_code)->paginate(7);
+        return view('admin.transaction_details', [
             'transaction' => $transaction,
             'orders' => $orders,
         ]);

@@ -1,4 +1,4 @@
-@extends('layout\app')
+@extends('layout.app')
 
 @section('content')
 
@@ -84,7 +84,7 @@
                                     <td class="price-col">
                                         {{ $order->quantity }}
                                     </td>
-                                    <td class="total-col">${{ $order->product->product_price * $order->quantity  }}</td>
+                                    <td class="total-col">₦{{ $order->product->product_price * $order->quantity  }}</td>
                                     <td class="price-col">
                                         <span class="badge badge-info">{{ $order->status }}</span>
 
@@ -150,7 +150,7 @@
                                                 <label class="custom-control-label" for="free-shipping">Total Cost:</label>
                                             </div><!-- End .custom-control -->
                                         </td>
-                                        <td>${{ $ts->amount }}</td>
+                                        <td>₦{{ $ts->amount }}</td>
                                     </tr>
                                     <!-- <tr class="summary-shipping-row">
                                         <td>

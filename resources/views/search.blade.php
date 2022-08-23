@@ -1,18 +1,17 @@
-@extends('layout\app')
+@extends('layout.app')
 
 @section('content')
 <main class="main">
     <div class="page-header text-center" style="background-image: url('/web/assets/images/page-header-bg.jpg')">
         <div class="container">
-            <h1 class="page-title">Grid 4 Columns<span>Shop</span></h1>
+            <h1 class="page-title">Search Results<span></span></h1>
         </div><!-- End .container -->
     </div><!-- End .page-header -->
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Grid 4 Columns</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Search</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -20,7 +19,7 @@
     <div class="page-content">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="toolbox">
 
                         <div class="toolbox-right">
@@ -101,102 +100,134 @@
 
                             @foreach($searchResults as $result)
 
+
                             @if($result->old_price)
-                            <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                <div class="product product-7 text-center">
+                            <div class="col-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2">
+                                <div class="product product-7">
                                     <figure class="product-media">
                                         @if($result->tag)
-                                        <span class="product-label label-new">{{ $result->tag  }} </span>
+                                        <span class="product-label label-new">{{ $result->tag}}</span>
                                         @endif
-                                        <img src="/products/{{ $result->product_image }}" alt="Product image" class="product-image">
+                                        <a href="{{ route('view-product', $result)}}">
+                                            <img src="/products/{{ $result->product_image }}" alt="Product image" class="product-image">
                                         </a>
 
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                        </div>
                                         @if(Auth::user())
                                         @if(!$result->hasCart(Auth::user()))
-                                        <form action="{{ route('carts', ['product' => $result]) }}" method="post">
-                                            @csrf
-                                            <div class="product-action">
-                                                <button type="submit" class="btn btn-product btn-no-border btn-cart"><span>add to cart</span></button>
-                                            </div>
-                                        </form>
-                                        @else
-                                        <form action="{{ route('carts', ['product' => $result]) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <div class="product-action">
-                                                <button type="submit" class="btn btn-product btn-no-border btn-cart"><span>remove from cart</span></button>
-                                            </div>
-                                        </form>
+                                        <div class="product-action">
+                                            <button id="{{ $result->id }}" class="btn-product btn-cart"><span>add to cart</span></button>
+                                        </div>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#{{ $result->id}}").on("click", function(e) {
+
+                                                    var cartBtn = document.getElementById("{{ $result->id }}").value;
+                                                    e.preventDefault();
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: "http://127.0.0.1:8000/api/addCart",
+                                                        data: {
+                                                            userId: "{{ Auth::user()->id }}",
+                                                            productId: "{{ $result->id }}",
+                                                        },
+                                                        success: function(data) {
+                                                            res = JSON.parse(data);
+                                                            if (res.success) {
+                                                                $('#{{ $result->id }}').hide();
+                                                                cartCount("{{ Auth::user()->id }}");
+                                                            }
+                                                        }
+                                                    });
+                                                    // myCarts("{{ Auth::user()->id }}");
+                                                });
+                                            });
+                                        </script>
                                         @endif
                                         @else
-                                        <form action="{{ route('carts', ['product' => $result]) }}" method="post">
-                                            @csrf
-                                            <div class="product-action">
-                                                <button type="submit" class="btn btn-product btn-no-border btn-cart"><span>add to cart</span></button>
-                                            </div>
-                                        </form>
+                                        <div class="product-action">
+                                            <a href="{{ route('cart') }}" id="{{ $result->id }}" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div>
                                         @endif
+
+
                                     </figure>
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">{{ $result->product_category }}</a>
+                                            <a href="">{{ $result->product_category }}</a>
                                         </div>
-                                        <h3 class="product-title"><a href="product.html">{{ $result->product_name }}</a></h3>
+                                        <h3 class="product-title"><a href="{{ route('view-product',$result) }}">{{ $result->product_name }}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
-                                            <span class="new-price">${{ $result->product_price }}</span>
-                                            <span class="old-price">Was ${{ $result->old_price}}</span>
-
-                                        </div>
-
-
-                                        <div class="product-nav product-nav-thumbs">
-                                            <a href="#" class="active">
-                                                <img src="/products/{{ $result->product_image }}" alt="product desc">
-                                            </a>
+                                            <span class="new-price">{{ $result->product_price }}</span>
+                                            <span class="old-price">{{ $result->old_price }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             @else
-
-                            <div class="col-6 col-md-4 col-lg-4 col-xl-3">
-                                <div class="product product-7 text-center">
+                            <div class="col-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2">
+                                <div class="product product-7">
                                     <figure class="product-media">
                                         @if($result->tag)
-                                        <span class="product-label label-new">{{ $result->tag  }} </span>
+                                        <span class="product-label label-new">{{ $result->tag }}</span>
                                         @endif
-                                        <img src="/products/{{ $result->product_image }}" alt="Product image" class="product-image">
+                                        <a href="{{ route('view-product', $result) }}">
+                                            <img src="/products/{{ $result->product_image }}" alt="Product image" class="product-image">
                                         </a>
 
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                                        @if(Auth::user())
+                                        @if(!$result->hasCart(Auth::user()))
+                                        <div class="product-action">
+                                            <button id="{{ $result->id }}" class="btn-product btn-cart"><span>add to cart</span></button>
                                         </div>
-                                    </figure>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#{{ $result->id}}").on("click", function(e) {
+
+                                                    var cartBtn = document.getElementById("{{ $result->id }}").value;
+                                                    e.preventDefault();
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: "http://127.0.0.1:8000/api/addCart",
+                                                        data: {
+                                                            userId: "{{ Auth::user()->id }}",
+                                                            productId: "{{ $result->id }}",
+                                                        },
+                                                        success: function(data) {
+                                                            res = JSON.parse(data);
+                                                            if (res.success) {
+                                                                $('#{{ $result->id }}').hide();
+                                                                cartCount("{{ Auth::user()->id }}");
+                                                            }
+                                                        }
+                                                    });
+                                                    // myCarts("{{ Auth::user()->id }}");
+                                                });
+                                            });
+                                        </script>
+                                        @endif
+                                        @else
+                                        <div class="product-action">
+                                            <a href="{{ route('cart') }}" id="{{ $result->id }}" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div>
+                                        @endif
+
+                                    </figure><!-- End .product-media -->
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">{{ $result->product_category }}</a>
-                                        </div>
-                                        <h3 class="product-title"><a href="product.html">{{ $result->product_name }}</a></h3>
+                                            <a href="">{{ $result->product_category }}</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title"><a href="{{ route('view-product', $result) }}">{{ $result->product_name }}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
                                             ${{ $result->product_price }}
-                                        </div>
+                                        </div><!-- End .product-price -->
 
-
-                                        <div class="product-nav product-nav-thumbs">
-                                            <a href="#" class="active">
-                                                <img src="/products/{{ $result->product_image }}" alt="product desc">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </div><!-- End .product-body -->
+                                </div><!-- End .product -->
                             </div>
                             @endif
+
 
                             @endforeach
                             @endif

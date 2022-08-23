@@ -14,7 +14,7 @@ class BulkMessageController extends Controller
     return a view that displays where to type message
      */
     public function index(){
-        return view('admin\bulkMessage');
+        return view('admin.bulkMessage');
     }
 
     /*

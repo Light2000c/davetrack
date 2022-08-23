@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,12 +37,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
     //return a view that display th user login form
     public function index(){
-        return view('auth\login');
+        return view('auth.login');
     }
 
 //validates the user login form and process login

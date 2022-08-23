@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 class CartController2 extends Controller
 {
+
    public function index(){}
 
    public function addToCart(Request $request){

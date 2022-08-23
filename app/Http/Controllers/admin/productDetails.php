@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Tag;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -17,12 +18,9 @@ class productDetails extends Controller
     // returns view that displays a particular product
     public function index(Product $product)
     {
-        $tags = [
-            'new',
-            'hot',
-        ];
-        $category = Category::get();
-        return view('admin\product-details', [
+        $tags = Tag::orderBy('created_at', 'Desc')->get();
+        $category = Category::orderBy('created_at', 'Desc')->get();
+        return view('admin.product-details', [
             'product' => $product,
             'categories' => $category,
             'tags' => $tags,

@@ -29,6 +29,6 @@ class orderMail extends Mailable
      */
     public function build()
     {
-        return $this->subject("Order is being processed")->view('mails\ordermail');
+        return $this->subject("Order is being processed")->markdown('mails.ordermail');
     }
 }

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/web1/assets/css/style.css">
-@extends('layout\app')
+@extends('layout.app')
 
 
 @section('content')
@@ -14,8 +14,8 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('transactions') }}">Transaction</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Transactions</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->

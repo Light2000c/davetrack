@@ -13,8 +13,8 @@ class TransactionController extends Controller
     //return a view wish displays all users transactions
     public function index()
     {
-        $transaction = Transaction::paginate(10);
-        return view('admin\transactions', [
+        $transaction = Transaction::orderBy('created_at', 'Desc')->paginate(10);
+        return view('admin.transactions', [
             'transactions' => $transaction,
         ]);
     }

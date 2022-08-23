@@ -29,6 +29,7 @@ public $details;
      */
     public function build()
     {
-        return $this->subject('Team Member Alert')->view('mails.member');
+
+        return $this->subject('Team Member Alert')->markdown('mails.member');
     }
 }
