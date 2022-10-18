@@ -109,7 +109,6 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('main-product') }}" class="">Products</a>
-
                                     <ul>
                                         <li><a href="{{ route('main-product', 'Access control') }}"> Access control </a></li>
                                         <li><a href="{{ route('main-product', 'Surveillance') }}">Surveillance</a></li>
@@ -147,61 +146,6 @@
                                 <span class="cart-count" id="cartTotal">{{ $items }}</span>
                                 @endif
                             </a>
-
-                            <!--  @if(Auth::user())
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-cart-products">
-
-                                    @if($cartt->count())
-                                    @foreach($cartt as $cart )
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h4 class="product-title">
-                                                <a href="product.html">{{ $cart->product->product_name }}</a>
-                                            </h4>
-
-                                            <span class="cart-product-info">
-                                                <span class="cart-product-qty">{{ $cart->quantity }}</span>
-                                                x ${{ $cart->product->product_price }}
-                                            </span>
-                                        </div>
-
-                                        <figure class="product-image-container">
-                                            <a href="{{ route('view-product', $cart->product) }}" class="product-image">
-                                                <img src="/products/{{ $cart->product->product_image }}" alt="product">
-                                            </a>
-                                        </figure>
-                                        <form action="{{ route('carts',['product' => $cart->product]) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn-remove" title="Remove Product"><i class="icon-close"></i></button>
-                                        </form>
-                                    </div>
-                                    @endforeach
-                                    @else
-                                    you have no cart yet
-                                    @endif
-                                </div>
-
-                                <div class="dropdown-cart-total">
-                                    <span>Total</span>
-                                    @php
-                                    $cart_total = 0;
-                                    foreach($cartt as $cartts){
-                                    $newcart = $cartts->product->product_price * $cartts->quantity;
-                                    $cart_total = $cart_total + $newcart;
-                                    }
-                                    @endphp
-                                    <span class="cart-total-price">${{ $cart_total }}</span>
-                                </div>
-
-
-                                <div class="dropdown-cart-action">
-                                    <a href="{{ route('cart') }}" class="btn btn-primary">View All</a>
-                                    <a href="{{ route('main-product') }}" class="btn btn-outline-primary-2"><span>Shop</span><i class="icon-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            @endif -->
                         </div>
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
@@ -228,12 +172,12 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget widget-about">
                                 <img src="/logo/davetracklogo whiteArtboard 1@2x.png" class="footer-logo" alt="Footer Logo" width="210" height="65">
-                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+                                <!-- <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p> -->
 
                                 <div class="social-icons">
-                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                    <!-- <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
                                     <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-whatsapp"></i></a>
-                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a> -->
                                 </div><!-- End .soial-icons -->
                             </div><!-- End .widget about-widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
@@ -271,7 +215,6 @@
                         <div class="col-sm-6 col-lg-3">
                             <div class="widget">
                                 <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
-
                                 <ul class="widget-list">
                                     <li><a href="{{ route('login') }}">Log In</a></li>
                                     <li><a href="{{ route('cart') }}">View Cart</a></li>
@@ -284,7 +227,6 @@
                     </div><!-- End .row -->
                 </div><!-- End .container -->
             </div><!-- End .footer-middle -->
-
             <div class="footer-bottom">
                 <div class="container">
                     <p class="footer-copyright">Copyright © 2022 Davetrack Technologies. All Rights Reserved.</p><!-- End .footer-copyright -->
@@ -300,14 +242,12 @@
     <div class="mobile-menu-container">
         <div class="mobile-menu-wrapper">
             <span class="mobile-menu-close"><i class="icon-close"></i></span>
-
             <!-- <form action="{{ route('searching') }}" method="post" class="mobile-search">
                 @csrf
                 <label for="mobile-search" class="sr-only">Search</label>
                 <input type="search" class="form-control" name="search" id="mobile-search" placeholder="Search in..." required>
                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
             </form> -->
-
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li class="">
@@ -334,28 +274,23 @@
                 </ul>
 
                 <ul class="mobile-menu">
-                    <li><a href="" class=" text-mute">Categories:</a></li>
-                <li>
-                        <!-- <a href="" class=" text-mute">Categories:</a> -->
-                        <div >
-                                <li><a class="text-success" href="{{ route('main-product', 'Access control') }}"> Access control </a></li>
-                                <li><a class="text-success" href="{{ route('main-product', 'Surveillance') }}">Surveillance</a></li>
-                                <li><a class="text-success" href="{{ route('main-product', 'Time and attendance') }}">Time and attendance </a></li>
-                                <li><a class="text-success" href="{{ route('main-product', 'Networkings') }}">Networkings </a></li>
-                                <li><a class="text-success" href="{{ route('main-product', 'Security gadgets') }}">Security gadgets </a></li>
-                                <li><a class="text-success" href="{{ route('main-product', 'Tracking device') }}">Tracking device</a></li>
-                        </div>
-                    </li>
-                    </ul>
+                    <li><a href="" class="text-muted">Product Categories:</a></li>
+                    <li>
+                        <div>
+                            @foreach($acategories as $acategory)
+                    <li><a class="text-success" href="{{ route('main-product', $acategory->title) }}"> {{ $acategory->title }}</a></li>
+                    @endforeach
+        </div>
+        </li>
+        </ul>
+        </nav>
 
-            </nav>
-
-            <div class="social-icons">
-                <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-whatsapp"></i></a>
-                <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-            </div><!-- End .social-icons -->
-        </div><!-- End .mobile-menu-wrapper -->
+        <div class="social-icons">
+            <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+            <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-whatsapp"></i></a>
+            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+        </div><!-- End .social-icons -->
+    </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
 

@@ -11,7 +11,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="/logo/davetrack 1.jpg" alt="First slide">
+                <img class="d-block w-100" src="/logo/davetrack slider 2 (1).jpg" alt="First slide">
                 <div class="intro-content">
                     <h3 class="intro-subtitle">Topsale Collection</h3><!-- End .h3 intro-subtitle -->
                     <h1 class="intro-title">Security<br>Gadgets</h1><!-- End .intro-title -->
@@ -23,7 +23,7 @@
                 </div><!-- End .intro-content -->
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/logo/davetrack slider 2.jpg" alt="Second slide">
+                <img class="d-block w-100" src="/logo/davetrack slider .jpg" alt="Second slide">
                 <div class="intro-content">
                     <h3 class="intro-subtitle">Access Controls</h3><!-- End .h3 intro-subtitle -->
                     <h1 class="intro-title">New Arrivals</h1><!-- End .intro-title -->
@@ -432,7 +432,7 @@
                     </span>
                     <div class="icon-box-content">
                         <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
-                        <p>Free Delivery for orders over ₦100000</p>
+                        <p>Free Delivery for orders over ₦1,000,000</p>
                     </div><!-- End .icon-box-content -->
                 </div><!-- End .icon-box -->
             </div><!-- End .col-lg-4 col-sm-6 -->

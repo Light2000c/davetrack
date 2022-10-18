@@ -47,6 +47,7 @@
 
                                         <small id="emailHelp" class="form-text  text-mute">Please select image before clicking upload to avoid running into problems.</small>
 
+                                        <input type="text" name="diff" value="image" hidden>
                                         <input type="file" class="form-control" name="product_image" id="inputAddress">
                                         @error('product_image')
                                         <small id="emailHelp" class="form-text  text-danger">{{ $message }}</small>
@@ -67,7 +68,7 @@
                                     @csrf
                                     @method('put')
 
-
+                                    <input type="text" name="diff" value="details" hidden>
                                     <div class="form-group">
                                         <label>Product Category</label>
                                         <select type="text" name="product_category" class="form-control">
@@ -145,7 +146,7 @@
                                                 </div> -->
                                     <div class="form-group">
                                         <label for="inputAddress2">Product Description</label>
-                                        <textarea type="text" name="product_description" class="form-control" value="{{ $product->product_description }}" rows="4" id="inputAddress2" placeholder="Enter description here...."></textarea>
+                                        <textarea type="text" name="product_description" class="form-control"  rows="4" id="inputAddress2" placeholder="Enter description here....">{{ $product->product_description }}</textarea>
                                         @error('product_description')
                                         <small id="emailHelp" class="form-text text-danger">{{ $message }}</small>
                                         @enderror

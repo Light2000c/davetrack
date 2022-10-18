@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class DeleteTagCat extends Controller
 {
-    public function deleteTagCat($id, Request $request){
+    public function catTag($id, Request $request){
 
         if ($request->has('category')) {
 

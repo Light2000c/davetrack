@@ -158,7 +158,7 @@ Route::post('admin/logout', [AdminLogoutController::class, 'logout'])->name('adm
 
 Route::put('admin/permit/{user}', [PermitController::class, 'update'])->name('permit');
 
-Route::delete('admin/tag/category/{id}', [DeleteTagCat::class, 'deleteTagCat'])->name('deleteTagCat');
+Route::delete('admin/tag/category/{id}', [DeleteTagCat::class, 'catTag'])->name('catTag');
 
 });
 

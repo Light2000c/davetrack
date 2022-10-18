@@ -108,3 +108,10 @@ function onlyOnenext(checkbox) {
     })
 }
 
+function onlyOnenext2(checkbox) {
+    var checkboxes = document.getElementsByName('check3')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
+}
+

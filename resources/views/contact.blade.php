@@ -31,15 +31,15 @@
                                 <ul class="contact-list">
                                     <li>
                                         <i class="icon-map-marker"></i>
-                                 No 2 People Street Computer Village, Ikeja Lagos
+                                        No 2 Pepple Street Computer Village, Ikeja Lagos
                                     </li>
                                     <li>
                                         <i class="icon-phone"></i>
-                                        <a href="tel:#">+234 806 344 0147</a>
+                                        <a href="tel:+234 806 344 0147">+234 806 344 0147</a>
                                     </li>
                                     <li>
                                         <i class="icon-envelope"></i>
-                                        <a href="mailto:#">info@Molla.com</a>
+                                        <a href="mailto:support@davetracktechnologies.com?">support@davetracktechnologies.com</a>
                                     </li>
                                 </ul><!-- End .contact-list -->
                             </div><!-- End .contact-info -->
@@ -68,19 +68,19 @@
 
                         @if(session('success'))
 
-@php
-alert()->success('Success!', session('success'))->persistent('Dismiss');
-@endphp
+                        @php
+                        alert()->success('Success!', session('success'))->persistent('Dismiss');
+                        @endphp
 
-@endif
+                        @endif
 
-@if(session('error'))
+                        @if(session('error'))
 
-@php
-alert()->error('Error!', session('error'))->persistent('Dismiss');
-@endphp
+                        @php
+                        alert()->error('Error!', session('error'))->persistent('Dismiss');
+                        @endphp
 
-@endif
+                        @endif
 
                         <div class="row">
                             <div class="col-sm-6">

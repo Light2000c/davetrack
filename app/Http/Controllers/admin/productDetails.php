@@ -33,7 +33,7 @@ class productDetails extends Controller
         /*
         conditional statement to check if the user is update just an image or the whole product data
         */
-        if ($request->has('product_image')) {
+        if ($request->diff == 'image') {
 
             //validates the request to update image
             $this->validate($request, [
@@ -58,7 +58,7 @@ class productDetails extends Controller
                 return back()->with('error', 'Update wasn\'t successful, Please try again later');
             }
             return back()->with('success', 'Updating of product was successful');
-        } else {
+        } else if ($request->diff == 'details'){
 
             //validates the form to update product information
 

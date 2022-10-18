@@ -189,16 +189,16 @@
                         <div class="widget-body">
                             <div class="filter-items filter-items-count">
 
-                            @foreach($categories as $category)
-                            @if($cc1 == $category->title)
-                            <div>
-                                    <input type="checkbox" name="check" value="{{ $category->title}}"  checked onclick="onlyOne(this)" value="">
-                                    <label for="{{ $category->title}}">{{ $category->title}}</label>
-                                </div>
-                             @else
+                                @foreach($categories as $category)
+                                @if($category->title == $c1)
                                 <div>
-                                    <input type="checkbox" name="check" value="{{ $category->title}}" onclick="onlyOne(this)" value="">
-                                    <label for="{{ $category->title}}">{{ $category->title}}</label>
+                                    <input type="checkbox" checked name="check" value="{{ $category->title}}" onclick="onlyOne(this)">
+                                    <label for="{{ $category->title }}">{{ $category->title }}</label>
+                                </div>
+                                @else
+                                <div>
+                                    <input type="checkbox" name="check" value="{{ $category->title}}" onclick="onlyOne(this)">
+                                    <label for="{{ $category->title}}">{{ $category->title }}</label>
                                 </div>
                                 @endif
                                 @endforeach
@@ -211,17 +211,18 @@
                             Tags
                         </h3><!-- End .widget-title -->
 
+
                         <div class="widget-body">
                             <div class="filter-items filter-items-count">
-                            @foreach($tags as $tag)
-                            @if($t1 == $tag->title)
-                            <div>
-                                    <input type="checkbox" checked  name="check2" value="{{ $tag->title}}" onclick="onlyOnenext(this)" value="">
+                                @foreach($tags as $tag)
+                                @if($t1 == $tag->title)
+                                <div>
+                                    <input type="checkbox" checked name="check2" value="{{ $tag->title}}" onclick="onlyOnenext(this)">
                                     <label for="{{ $tag->title }}">{{ $tag->title}}</label>
                                 </div>
-                            @else
+                                @else
                                 <div>
-                                    <input type="checkbox"  name="check2" value="{{ $tag->title}}" onclick="onlyOnenext(this)" value="">
+                                    <input type="checkbox" name="check2" value="{{ $tag->title}}" onclick="onlyOnenext(this)">
                                     <label for="{{ $tag->title }}">{{ $tag->title}}</label>
                                 </div>
                                 @endif
@@ -232,6 +233,8 @@
 
 
 
+
+
                     <div class="widget">
                         <h3 class="widget-title">
                             Price Range
@@ -239,17 +242,23 @@
 
                         <div class="widget-body">
                             <div class="filter-items filter-items-count">
-
+                                @if($p1)
+                                <div>
+                                    <input type="range" value="{{ $p1 }}" name="range" min="0" max="500000" oninput="this.nextElementSibling.value = this.value">
+                                    <output>{{ $p1 }}</output>
+                                </div>
+                                @else
                                 <div>
                                     <input type="range" value="0" name="range" min="0" max="500000" oninput="this.nextElementSibling.value = this.value">
-                                    <output>{{ number_format(0) }}</output>
+                                    <output>0</output>
                                 </div>
+                                @endif
                             </div>
                         </div><!-- End .widget-body -->
                     </div><!-- End .widget -->
 
                     <div>
-                        <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">Filter</button>
+                        <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">Apply Filter</button>
                     </div>
                 </form>
 

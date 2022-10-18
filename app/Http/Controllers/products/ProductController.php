@@ -55,8 +55,9 @@ class ProductController extends Controller
             'products' => $products,
             'categories' => $categories,
             'tags' => $tags,
-            'cc1' => $category,
+            'c1' => $category,
             't1' => $tag,
+            'p1' => $price,
         ]);
     }
 

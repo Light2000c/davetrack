@@ -74,16 +74,14 @@
                                         <label class="custom-control-label" for="standart-shipping">Total amount:</label>
                                     </div><!-- End .custom-control -->
                                 </td>
-                                <!-- @php
-
-                                $total = 6;
+                                @php
+                                $total_cart = 0;
                                 foreach($carts as $cart){
-                                $newTotal = $cart->product->product_price * $cart->product->product_quantity;
-                                $total = $total + $newTotal;
+                                $new_cart = $cart->product->product_price * $cart->quantity;
+                                $total_cart = $total_cart + $new_cart;
                                 }
-
-                                @endphp -->
-                                <td>₦0</td>
+                                @endphp
+                                <td>₦{{ $total_cart  }}</td>
                             </tr><!-- End .summary-shipping-row -->
 
                             <tr class="summary-shipping-row">
@@ -109,7 +107,7 @@
                                 $total_cart = $total_cart + $new_cart;
                                 }
                                 @endphp
-                                <td>${{ $total_cart }}</td>
+                                <td>₦{{ $total_cart }}</td>
                             </tr><!-- End .summary-total -->
                         </tbody>
                     </table><!-- End .table table-summary -->
@@ -117,6 +115,7 @@
                     <input type="hidden" name="email" value="{{ Auth::user()->email }}"> {{-- required --}}
                     <input type="hidden" name="orderID" value="345">
                     <input type="hidden" name="amount" value="{{ $total_cart }}00"> {{-- required in kobo --}}
+                    <!-- <input type="hidden" name="realamount" value="{{ $total_cart }}"> {{-- real amount --}} -->
                     <input type="hidden" name="quantity" value="1">
                     <input type="hidden" name="currency" value="NGN">
                     <!-- <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value','cart'=> $carts]) }}"> -->

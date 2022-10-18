@@ -42,23 +42,26 @@ class PaymentController extends Controller
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
 
+
         if ($paymentDetails['status'] === true) {
+          $new_amount = substr($paymentDetails['data']['amount'], 0, -2);
+
 
             $total_cart = Cart::where('user_id', Auth::user()->id)->get();
-            $transact_ref = Cart::where('user_id',Auth::user()->id)->first();
+            $transact_ref = Cart::where('user_id', Auth::user()->id)->first();
             $new_code = $transact_ref->code;
 
             $transaction = Transaction::create([
-              'user_id'=> Auth::user()->id,
-              'transact_code' => $new_code,
-              'amount' => $paymentDetails['data']['amount'],
-              'product_count'=> $total_cart->count(),
-
+                'user_id' => Auth::user()->id,
+                'transact_code' => $new_code,
+                //   'amount' => $paymentDetails['data']['amount'],
+                'amount' => $new_amount,
+                'product_count' => $total_cart->count(),
             ]);
 
             $details = [
-             'name' => Auth::user()->name,
-             'code' => $new_code,
+                'name' => Auth::user()->name,
+                'code' => $new_code,
             ];
 
             $success = Cart::query()
@@ -75,9 +78,8 @@ class PaymentController extends Controller
 
             if ($transaction && $success) {
                 Mail::to(Auth::user()->email)->send(new orderMail($details));
-                return redirect()->route('transaction');
+                return redirect()->route('transactions');
             }
-
         }
     }
 }

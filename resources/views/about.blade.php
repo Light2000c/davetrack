@@ -40,11 +40,6 @@
                             <div class="col-lg-5 mb-3 mb-lg-0">
                                 <h2 class="title">Who We Are</h2><!-- End .title -->
                                 <p> Davetrack Technologies is bent on serving different clients through it's innnovative gadgets,It was founded in 2022,Davetrack Technologies provides a vast range of physical security and access control gadgets.These gadgets helps in securing our customers they include security gadgets,networking gadgets,tracking devices and of course access control.</p>
-
-                                <a href="blog.html" class="btn btn-sm btn-minwidth btn-outline-primary-2">
-                                    <span>VIEW OUR NEWS</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                </a>
                             </div><!-- End .col-lg-5 -->
 
                             <div class="col-lg-6 offset-lg-1">
