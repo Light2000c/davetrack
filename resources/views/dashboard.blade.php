@@ -33,11 +33,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('transactions') }}">Transactions History</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <form action="" method="post">
                                 <a class="nav-link" href="#">Log Out</a>
                                 </form>
-                            </li>
+                            </li> -->
                         </ul>
                     </aside><!-- End .col-lg-3 -->
 

@@ -26,8 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $newlyAdded = Product::orderBy('created_at', 'asc')->take(8)->get();
-        $controls = Product::where('product_category', 'Access control')->orderBy('created_at', 'asc')->take(8)->get();
-        $security = Product::where('product_category', 'Security gadgets')->orderBy('created_at', 'asc')->take(8)->get();
+        $controls = Product::where('product_category', 'Door Security & Access Control Systems')->orderBy('created_at', 'asc')->skip(8)->take(8)->get();
+        $security = Product::where('product_category', 'Surveillance & CCTV Cameras')->orderBy('created_at', 'asc')->skip(8)->take(8)->get();
         return view('home',[
             'newlyAdded'=> $newlyAdded,
             'controls'=> $controls,

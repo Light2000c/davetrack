@@ -11,7 +11,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="/logo/davetrack slider 2 (1).jpg" alt="First slide">
+                <img class="d-block w-100" src="/logo/new davetrack slider 1.jpg" alt="First slide">
                 <div class="intro-content">
                     <h3 class="intro-subtitle">Topsale Collection</h3><!-- End .h3 intro-subtitle -->
                     <h1 class="intro-title">Security<br>Gadgets</h1><!-- End .intro-title -->
@@ -23,7 +23,7 @@
                 </div><!-- End .intro-content -->
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/logo/davetrack slider .jpg" alt="Second slide">
+                <img class="d-block w-100" src="/logo/new davetrack slideer.jpg" alt="Second slide">
                 <div class="intro-content">
                     <h3 class="intro-subtitle">Access Controls</h3><!-- End .h3 intro-subtitle -->
                     <h1 class="intro-title">New Arrivals</h1><!-- End .intro-title -->
@@ -52,40 +52,39 @@
             <div class="banner-group">
                 <div class="row">
                     <div class="col-sm-6 col-lg-4">
-                        <div class="banner banner-overlay">
+                        <div class="banner banner-overlay card shadow">
                             <a >
-                                <img src="/logo/davetrackkk home 3 (1).jpg" alt="Banner">
+                                <img src="/logo/davetrackkk home new smart.jpg" alt="Banner">
                             </a>
 
                             <div class="banner-content">
-                                <h3 class="banner-title text-white"><a>24/7 Security <br>Coverage</a></h3><!-- End .banner-title -->
-                                <a href="{{ route('main-product', 'Security gadgets') }}" class="btn btn-outline-white banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
+                                <h3 class="banner-title text-muted"><a>24/7 Security <br>Coverage</a></h3><!-- End .banner-title -->
+                                <a href="{{ route('main-product', 'Door Security & Access Control Systems') }}" class="btn btn-outline-white banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                             </div>
                         </div><!-- End .banner -->
                     </div><!-- End .col-lg-4 -->
 
                     <div class="col-sm-6 col-lg-4">
-                        <div class="banner banner-overlay">
+                        <div class="banner banner-overlay card shadow">
                             <a>
-                                 <img src="/logo/davetrack home 2 (1).jpg" alt="Banner">
+                                 <img src="/logo/davetrackkk home new cam.jpg" alt="Banner">
                             </a>
 
                             <div class="banner-content">
-                                <h4 class="banner-subtitle"><a >Best in</a></h4><!-- End .banner-subtitle -->
-                                <h3 class="banner-title text-white"><a>Surveillance <br></a></h3><!-- End .banner-title -->
-                                <a href="{{ route('main-product', 'Surveillance') }}" class="btn btn-outline-white banner-link">Discover Now <i class="icon-long-arrow-right"></i></a>
+                                <h3 class="banner-title text-muted"><a><strong>Best in<br>Surveillance </strong></a></h3><!-- End .banner-title -->
+                                <a href="{{ route('main-product', 'Surveillance Gadgets (Spy Cams, Spy Glasses & Spy Pens)') }}" class="btn btn-outline-white banner-link">Discover Now <i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
                     </div><!-- End .col-lg-4 -->
 
                     <div class="col-sm-6 col-lg-4 d-none d-lg-block">
-                        <div class="banner banner-overlay">
+                        <div class="banner banner-overlay card shadow">
                             <a>
-                            <img src="/logo/davetrackkk home1 (1).jpg" alt="Banner">
+                            <img src="/logo/davetrackkk home new cam2.jpg" alt="Banner">
                             </a>
 
                             <div class="banner-content">
-                                <h3 class="banner-title"><a><strong>Best in<br>Connectivity </strong></a></h3><!-- End .banner-title -->
+                                <h3 class="banner-title text-muted"><a><strong>Best in<br>Connectivity </strong></a></h3><!-- End .banner-title -->
                                 <a href="{{ route('main-product') }}" class="btn btn-outline-white banner-link">Shop Now <i class="icon-long-arrow-right"></i></a>
                             </div><!-- End .banner-content -->
                         </div><!-- End .banner -->
@@ -104,10 +103,10 @@
 
             <ul class="nav nav-pills justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="trendy-all-link" data-toggle="tab" href="#trendy-all-tab" role="tab" aria-controls="trendy-all-tab" aria-selected="true">Security Gadgets</a>
+                    <a class="nav-link active" id="trendy-all-link" data-toggle="tab" href="#trendy-all-tab" role="tab" aria-controls="trendy-all-tab" aria-selected="true">Surveillance & CCTV Cameras</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="trendy-fur-link" data-toggle="tab" href="#trendy-fur-tab" role="tab" aria-controls="trendy-fur-tab" aria-selected="false">Access Controls</a>
+                    <a class="nav-link" id="trendy-fur-link" data-toggle="tab" href="#trendy-fur-tab" role="tab" aria-controls="trendy-fur-tab" aria-selected="false">Door Security & Access Control Systems</a>
                 </li>
             </ul>
         </div><!-- End .heading -->
@@ -302,7 +301,7 @@
 
                     <div class="banner-content banner-content-center">
                         <h3 class="banner-title text-white"><a>Security Gadgets</a></h3><!-- End .banner-title -->
-                        <a href="{{ route('main-product', 'Security Gadgets') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                        <a href="{{ route('main-product', 'Door Security & Access Control Systems') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
                     </div><!-- End .banner-content -->
                 </div><!-- End .banner -->
             </div><!-- End .col-sm-6 col-lg-3 -->
@@ -314,7 +313,7 @@
 
                     <div class="banner-content banner-content-center">
                         <h3 class="banner-title text-white"><a>Networking</a></h3><!-- End .banner-title -->
-                        <a href="{{ route('main-product', 'Networking') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                        <a href="{{ route('main-product', 'Networking Products') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
                     </div><!-- End .banner-content -->
                 </div><!-- End .banner -->
             </div><!-- End .col-sm-6 col-lg-3 -->
@@ -327,7 +326,7 @@
 
                         <div class="banner-content banner-content-center">
                             <h3 class="banner-title text-white"><a href="#">Tracking Devices</a></h3><!-- End .banner-title -->
-                            <a href="{{ route('main-product', 'Tracking Devices') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                            <a href="{{ route('main-product', 'Tracking device') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .banner-content -->
                     </div><!-- End .banner -->
 
@@ -338,7 +337,7 @@
 
                         <div class="banner-content banner-content-center">
                             <h3 class="banner-title text-white"><a>Access Control</a></h3><!-- End .banner-title -->
-                            <a href="{{ route('main-product', 'Access Controls') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                            <a href="{{ route('main-product', 'Door Security & Access Control Systems') }}" class="btn btn-outline-white banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
                         </div><!-- End .banner-content -->
                     </div><!-- End .banner -->
                 </div>

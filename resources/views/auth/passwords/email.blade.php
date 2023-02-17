@@ -1,64 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+@extends('layout\app')
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+@section('content')
+<main class="main">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Reset Password</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
 
-</head>
-<body>
-<div class="container">
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+    <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url('/logo/davetrack login page website (1).jpg')">
+        <div class="container">
+            <div class="form-box">
+                <div class="form-tab">
+                    <ul class="nav nav-pills nav-fill" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link text-success" style="font-weight: bolder;" id="signin-tab-2">RESET PASSWORD</a>
+                        </li>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    </ul>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+                    <div class="tab-content">
+                        <!-- beginning of login tab-->
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                        <!-- <div class="tab-pane fade" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2"> -->
+                        <form method="POST" action="{{ route('password.email') }}">
+                            @csrf
 
-                            <div class="col-md-6">
+                            @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                            @endif
+
+                            <div class="form-group">
+                                <label for="register-email-2">Email Address *</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <small id="emailHelp" class="form-text text-danger mt-1">{{ $message }}</small>
                                 @enderror
-                            </div>
-                        </div>
+                            </div><!-- End .form-group -->
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
-                                    {{ __('Send Password Reset Link') }}
+                            <div class="form-footer">
+                                <button type="submit" class="btn btn-outline-primary-2">
+                                    <span>Send Password Reset Link</span>
+                                    <i class="icon-long-arrow-right"></i>
                                 </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-</html>
+                            </div><!-- End .form-footer -->
+                        </form>
 
+
+                    </div><!-- End .tab-content -->
+                </div><!-- End .form-tab -->
+            </div><!-- End .form-box -->
+        </div><!-- End .container -->
+    </div><!-- End .login-page section-bg -->
+</main><!-- End .main -->
+
+@endsection

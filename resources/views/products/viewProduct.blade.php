@@ -144,7 +144,7 @@
                     <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
                         <div class="product-desc-content">
                             <h3>Product Information</h3>
-                            <p>{{ $product->description }}</p>
+                            <p>{{ $product->product_description }}</p>
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">

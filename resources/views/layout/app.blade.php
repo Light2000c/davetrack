@@ -110,12 +110,12 @@
                                 <li>
                                     <a href="{{ route('main-product') }}" class="">Products</a>
                                     <ul>
-                                        <li><a href="{{ route('main-product', 'Access control') }}"> Access control </a></li>
-                                        <li><a href="{{ route('main-product', 'Surveillance') }}">Surveillance</a></li>
-                                        <li><a href="{{ route('main-product', 'Time and attendance') }}">Time and attendance </a></li>
-                                        <li><a href="{{ route('main-product', 'Networkings') }}">Networkings </a></li>
-                                        <li><a href="{{ route('main-product', 'Security gadgets') }}">Security gadgets </a></li>
-                                        <li><a href="{{ route('main-product', 'Tracking device') }}">Tracking device</a></li>
+                                        <li><a href="{{ route('main-product', 'Door Security & Access Control Systems') }}">Door Security & Access Control Systems</a></li>
+                                        <li><a href="{{ route('main-product', 'Surveillance Gadgets (Spy Cams, Spy Glasses & Spy Pens)') }}">Surveillance Gadgets (Spy Cams, Spy Glasses & Spy Pens)</a></li>
+                                        <li><a href="{{ route('main-product', 'Time And Attendance Capturing Machines') }}">Time And Attendance Capturing Machines</a></li>
+                                        <li><a href="{{ route('main-product', 'Networking Products') }}">Networking Products</a></li>
+                                        <li><a href="{{ route('main-product', 'Accessories') }}">Accessories</a></li>
+                                        <li><a href="{{ route('main-product', 'Tracking device') }}">Surveillance & Computer Accessories</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -175,9 +175,10 @@
                                 <!-- <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p> -->
 
                                 <div class="social-icons">
-                                    <!-- <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-whatsapp"></i></a>
-                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a> -->
+                                <a href="https://wa.me/message/CO5FY5BOHGVSG1 " class="social-icon ml-lg-5 " title="whatsApp" target="_blank"><i class="icon-whatsapp"></i></a>
+                                    <a href="https://m.facebook.com/DAVETRACKtech/" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                    <a href="https://mobile.twitter.com/DAVETRACKTECH" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                    <a href="https://instagram.com/davetracktech?igshid=MDI0Mzk1ZWY=" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
                                 </div><!-- End .soial-icons -->
                             </div><!-- End .widget about-widget -->
                         </div><!-- End .col-sm-6 col-lg-3 -->
@@ -286,9 +287,9 @@
         </nav>
 
         <div class="social-icons">
-            <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+            <!-- <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
             <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-whatsapp"></i></a>
-            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a> -->
         </div><!-- End .social-icons -->
     </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
@@ -306,6 +307,20 @@
     <!-- Main JS File -->
     <script src="/web/assets/js/main.js"></script>
     <script src="/myScript.js"></script>
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/63558a79b0d6371309cb1b35/1gg329rn5';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 </body>
 
 

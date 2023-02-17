@@ -16,33 +16,33 @@ class ProductController extends Controller
 
         $products = "";
         if (!$category && !$tag && !$price) {
-            $products = Product::paginate(8);
+            $products = Product::orderBy('created_at', 'asc')->paginate(8);
         } elseif ($category != null && $tag == null && $price == null) {
             $category = $category;
-            $products = Product::where('product_category', $category)->paginate(8);
+            $products = Product::where('product_category', $category)->orderBy('created_at', 'asc')->paginate(8);
         }
          elseif ($category != 'category' && $tag == 'tag' && $price == null) {
             $category = $category;
-            $products = Product::where('product_category', $category)->paginate(8);
+            $products = Product::where('product_category', $category)->orderBy('created_at', 'asc')->paginate(8);
         } elseif ($category == 'category' && $tag != 'tag' && $price == null) {
 
             $category = $category;
-            $products = Product::where('tag', $tag)->paginate(8);
+            $products = Product::where('tag', $tag)->orderBy('created_at', 'asc')->paginate(8);
         } elseif ($category == 'category' && $tag == 'tag' && $price != null) {
             $category = $category;
-            $products = Product::where('product_price', '<=', $price)->paginate(8);
+            $products = Product::where('product_price', '<=', $price)->orderBy('created_at', 'asc')->paginate(8);
         } elseif ($category != 'category' && $tag != 'tag' && $price == null) {
 
             $category = $category;
-            $products = Product::where('product_category', $category)->where('tag', $tag)->paginate(8);
+            $products = Product::where('product_category', $category)->where('tag', $tag)->orderBy('created_at', 'asc')->paginate(8);
         } elseif ($category != 'category' && $tag == 'tag' && $price != null) {
 
             $category = $category;
-            $products = Product::where('product_category', $category)->where('product_price', '<=', $price)->paginate(8);
+            $products = Product::where('product_category', $category)->where('product_price', '<=', $price)->orderBy('created_at', 'asc')->paginate(8);
         } elseif ($category != 'category' && $tag == 'tag' && $price == null) {
 
             $category = $category;
-            $products = Product::where('tag', $tag)->where('product_price', '<=', $price)->paginate(8);
+            $products = Product::where('tag', $tag)->where('product_price', '<=', $price)->orderBy('created_at', 'asc')->paginate(8);
         } else {
             $products = Product::paginate(8);
         }
@@ -50,7 +50,7 @@ class ProductController extends Controller
 
 
         $tags = Tag::get();
-        $categories = Category::get();
+        $categories = Category::orderBy('created_at', 'asc')->get();
         return view('products.product', [
             'products' => $products,
             'categories' => $categories,

@@ -94,7 +94,7 @@
                             </tr><!-- End .summary-shipping-row -->
 
                             <tr class="summary-shipping-estimate">
-                                <td>Estimate for Your Delivery<br> <a href="dashboard.html">Change address</a></td>
+                                <td>Estimate for Your Delivery<br> <a href="{{ route('address') }}">Change address</a></td>
                                 <td>&nbsp;</td>
                             </tr><!-- End .summary-shipping-estimate -->
 

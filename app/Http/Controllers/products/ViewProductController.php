@@ -15,7 +15,7 @@ class ViewProductController extends Controller
 
         $cart="";
         $others = Product::where('product_category', $product->product_category)
-        ->where('id', '!=', $product->id)->get();
+        ->where('id', '!=', $product->id)->orderBy('created_at', 'asc')->get();
         if(Auth::user()){
         $cart = $product->cart()->where('user_id', Auth::user()->id)->first();
     }

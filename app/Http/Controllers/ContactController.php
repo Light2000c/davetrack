@@ -30,7 +30,7 @@ class ContactController extends Controller
             'message' => $request->message,
         ];
 
-        if(Mail::to('clintononitsha20@gmail.com')->send(new Contact($details))){
+        if(Mail::to('support@davetracktechnologies.com')->send(new Contact($details))){
             return back()->with('success', 'Your message have been successfully sent, you\'ll get a reply from us soon.');
         }else{
             return back();
